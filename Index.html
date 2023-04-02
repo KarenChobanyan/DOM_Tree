@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button {
+            width: 100px;
+            height: 100px;
+            border: 1pz solid;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let data = {
+            "Fish": {
+                "throut": {},
+                "salmon": {}
+            },
+            "Tree": {
+                "Huge": {
+                    "saquoia": {},
+                    "oak": {}
+                },
+                "Flowering": {
+                    "apple tree": {},
+                    "magnolia": {}
+                }
+            }
+        }
+        
+    function makeTree(obj,place){
+        let ul = document.createElement("ul")
+        place.append(ul)
+        let ulList = document.getElementsByTagName("ul")
+        let currentUl = ulList[ulList.length-1]
+        for(let key in obj){
+            let li = document.createElement("li")
+            li.textContent = key
+            currentUl.append(li)
+            if(typeof obj[key] == "object"){
+            let liList = document.getElementsByTagName("li")
+            let currentLi = liList[liList.length-1]
+            makeTree(obj[key],currentLi)
+            }
+        }
+    }
+    makeTree(data,document.body)
+    </script>
+</body>
+
+
+</html>
